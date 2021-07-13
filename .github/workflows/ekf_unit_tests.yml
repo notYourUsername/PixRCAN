@@ -1,0 +1,19 @@
+
+name: EKF unit tests
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - '*'
+
+jobs:
+  unit_tests:
+    runs-on: ubuntu-latest
+    container: px4io/px4-dev-base-focal:2021-05-04
+    steps:
+    - uses: actions/checkout@v1
+    - name: main test
+      run: cd ${GITHUB_WORKSPACE}/src/lib/ecl && make test

@@ -1,5 +1,5 @@
 
-name: Build Tests
+name: EKF Build Tests
 
 on:
   push:
@@ -16,11 +16,11 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: main build
-      run: make
+      run: cd ${GITHUB_WORKSPACE}/src/lib/ecl && make
     - name: clean build
-      run: make clean
+      run: cd ${GITHUB_WORKSPACE}/src/lib/ecl && make clean
     - name: main test
-      run: make test
+      run: cd ${GITHUB_WORKSPACE}/src/lib/ecl && make test
   Linux-Clang:
     runs-on: ubuntu-latest
     container: px4io/px4-dev-clang:2021-05-04
@@ -30,18 +30,18 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: main build
-        run: make
+        run: cd ${GITHUB_WORKSPACE}/src/lib/ecl && make
       - name: clean build
-        run: make clean
+        run: cd ${GITHUB_WORKSPACE}/src/lib/ecl && make clean
       - name: main test
-        run: make test
+        run: cd ${GITHUB_WORKSPACE}/src/lib/ecl && make test
   Mac-OS:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v1
       - name: main build
-        run: make
+        run: cd ${GITHUB_WORKSPACE}/src/lib/ecl && make
       - name: clean build
-        run: make clean
+        run: cd ${GITHUB_WORKSPACE}/src/lib/ecl && make clean
       - name: main test
-        run: make test
+        run: cd ${GITHUB_WORKSPACE}/src/lib/ecl && make test
